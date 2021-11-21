@@ -27,11 +27,6 @@ public class JeuController {
     Jeu j = jeuService.createJeu(jeu);
     boolean b = false;
     while (!b) {
-      // System.out.println("Waiting...");
-      // System.out.println("BECAUSE idJoueur1= " +
-      // jeuService.getJeu(jeu.getId()).getIdJoueur1());
-      // System.out.println("AND idJoueur2=" +
-      // jeuService.getJeu(jeu.getId()).getIdJoueur2());
       wait();
       b = true;
     }
@@ -48,15 +43,10 @@ public class JeuController {
     return jeuService.getJeux();
   }
 
-  @PutMapping("/update")
+  @PutMapping("/updateJeu")
   public synchronized Jeu updateJeu(@RequestBody Jeu jeu) {
     Jeu j = jeuService.updateJeu(jeu);
     if (jeuService.getJeu(jeu.getId()).getIdJoueur1() > 0 && jeuService.getJeu(jeu.getId()).getIdJoueur2() > 0) {
-      // System.out.println("Wake up !");
-      // System.out.println("BECAUSE idJoueur1= " +
-      // jeuService.getJeu(jeu.getId()).getIdJoueur1());
-      // System.out.println("AND idJoueur2=" +
-      // jeuService.getJeu(jeu.getId()).getIdJoueur2());
       notify();
     }
     return j;

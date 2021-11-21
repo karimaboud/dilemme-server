@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.uga.miage.m1.dilemme_g1_1.model.Joueur;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import fr.uga.miage.m1.dilemme_g1_1.services.JoueurService;
@@ -40,6 +41,7 @@ public class JoueurController {
   }
 
   @GetMapping("/joueur/{id}")
+
   public Joueur getJoueurById(@PathVariable int id) {
     return joueurService.getJoueurById(id);
   }
@@ -47,6 +49,11 @@ public class JoueurController {
   @GetMapping("/joueurs")
   public List<Joueur> getAllJoueurs() {
     return joueurService.getJoueurs();
+  }
+
+  @PutMapping("/updateJoueur")
+  public Joueur updateJoueur(@RequestBody Joueur joueur) {
+    return joueurService.updateJoueur(joueur);
   }
 
   @DeleteMapping("/deleteJoueur/{id}")

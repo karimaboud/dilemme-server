@@ -1,9 +1,11 @@
 package fr.uga.miage.m1.dilemme_g1_1.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import fr.uga.miage.m1.dilemme_g1_1.dao.JoueurRepository;
 import fr.uga.miage.m1.dilemme_g1_1.model.Joueur;
@@ -27,6 +29,10 @@ public class JoueurService {
 
   public List<Joueur> getJoueurs() {
     return joueurRepository.findAll();
+  }
+
+  public Joueur updateJoueur(Joueur joueur) {
+    return joueurRepository.save(joueur);
   }
 
   public void deleteUserById(int id) {
